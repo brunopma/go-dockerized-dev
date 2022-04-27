@@ -1,0 +1,29 @@
+version: "3"
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: dev
+    volumes:
+      - .:/opt/app
+    # ports:
+    #   - 127.0.0.1:EXTERNAL_PORT:GO_PORT
+
+  ## other services go here, like a database or anything you want
+
+  # db:
+  #   image: postgres:14.2-alpine
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+  #     - POSTGRES_DB=database
+  #   volumes:
+  #     - postgres-volume:/var/lib/postgresql/data
+  #   ports:
+  #     - 127.0.0.1:33306:5432
+  #   restart: on-failure
+
+# volumes:
+#   - postgres-volume
+
