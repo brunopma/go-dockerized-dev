@@ -5,10 +5,16 @@ services:
       dockerfile: Dockerfile
       context: .
       target: dev
+    command: ${GO_COMMAND}
     volumes:
       - .:/opt/app
-    # ports:
-    #   - 127.0.0.1:EXTERNAL_PORT:GO_PORT
+    security_opt:
+      - "seccomp:unconfined"
+    tty: true
+    stdin_open: true
+    ports:
+      - 127.0.0.1:2345:2345
+      # - 127.0.0.1:EXTERNAL_PORT:GO_PORT
 
   ## other services go here, like a database or anything you want
 
